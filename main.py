@@ -1,5 +1,6 @@
 from re import search
 
+import pandas
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -37,6 +38,10 @@ for repo in repo_elements:
     except Exception as e:
         continue
 
+for s in scraped_data:
+    print(s)
 
-print(scraped_data)
+df = pandas.DataFrame(scraped_data)
+
+df.to_csv('REPO.csv', index=False)
 driver.quit()
